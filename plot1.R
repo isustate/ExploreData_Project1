@@ -13,6 +13,6 @@ graphdata$Sub_metering_3 <- as.numeric(graphdata$Sub_metering_3)
 graphdata$Voltage <- as.numeric(graphdata$Voltage)
 
 # Histogram Plot
+png(file = "plot1.png", width = 480, height = 480, units="px")
 hist(graphdata$Global_active_power, main = "Global Active Power", xlab = "Global Active Power (kilowatts)", col = "red")
-dev.copy(png,file = "plot1.png", width = 480, height = 480)
 dev.off()

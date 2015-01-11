@@ -13,20 +13,20 @@ graphdata$Sub_metering_3 <- as.numeric(graphdata$Sub_metering_3)
 graphdata$Voltage <- as.numeric(graphdata$Voltage)
 
 # Multiple Plots
+png(file = "plot4.png", width = 480, height = 480, units="px")
 par(mfrow = c(2,2))
 yrange<-range(c(graphdata$Sub_metering_1,graphdata$Sub_metering_2,graphdata$Sub_metering_3))
 
 with(graphdata, {
-  plot(DateTime, Global_active_power, cex = 0.5, type = "l", xlab ="", ylab = "Global Active Power")
-  plot(DateTime, Voltage , cex = 0.5, type = "l", ylab = "Voltage", xlab = "datetime")
-  plot(DateTime, Sub_metering_1, cex = 0.5, type = "l", ylim = yrange, ylab = "Energy sub metering")
-  lines(DateTime, Sub_metering_2, cex = 0.5, type = "l", col="red")
-  lines(DateTime, Sub_metering_3, cex = 0.5, type = "l", col="blue")
-  legend("topright", cex = 0.5, lty = "solid", col = c("black","red","blue"), legend = c("Sub_metering_1","Sub_metering_2","Sub_metering_3"))
-  plot(DateTime, Global_reactive_power, cex = 0.5, type = "l", ylab = "Global_reactive_power",xlab = "datetime")
+  plot(DateTime, Global_active_power, type = "l", xlab ="", ylab = "Global Active Power")
+  plot(DateTime, Voltage , type = "l", ylab = "Voltage", xlab = "datetime")
+  plot(DateTime, Sub_metering_1, type = "l", ylim = yrange, ylab = "Energy sub metering",xlab="")
+  legend("topright", bty = "n", lty = "solid", col = c("black","red","blue"), legend = c("Sub_metering_1","Sub_metering_2","Sub_metering_3"))
+  lines(DateTime, Sub_metering_2, type = "l", col="red")
+  lines(DateTime, Sub_metering_3, type = "l", col="blue")
+  plot(DateTime, Global_reactive_power, type = "l", ylab = "Global_reactive_power",xlab = "datetime")
   
 })
-dev.copy(png,file = "plot4.png", width = 480, height = 480)
 dev.off()
 
 
